@@ -1,0 +1,37 @@
+import React from "react";
+import { motion } from "framer-motion";
+
+import styles from "./Picked.module.scss";
+import { useCompGameItem, useGameItem, useWinStatus } from "components/store";
+import { GameItem } from "components/GameItem";
+import { CentralResultComponent } from "components/CentralResultComponent";
+
+interface PickedProps {}
+
+const Picked: React.FC<PickedProps> = () => {
+  const choosenGameItem = useGameItem((state) => state.gameItem);
+  const compGameItem = useCompGameItem((state) => state.compGameItem);
+  const winStatus = useWinStatus((state) => state.winStatus);
+
+  return (
+    <motion.div
+      className={styles.picked}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className={`${styles.gameItemContainer} ${styles.leftContainer}`}>
+        <p className={styles.text}>you picked</p>
+        {choosenGameItem != null && <GameItem gameItem={choosenGameItem} size="Big" />}
+      </div>
+      {winStatus != null && <CentralResultComponent />}
+      <div className={`${styles.gameItemContainer} ${styles.rightContainer}`}>
+        <p className={styles.text}>the house picked</p>
+        {compGameItem != null ? <GameItem gameItem={compGameItem} size="Big" /> : <div className={styles.empty}> </div>}
+      </div>
+    </motion.div>
+  );
+};
+
+export { Picked };

@@ -1,0 +1,36 @@
+.centralResultComponent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  grid-area: center;
+}
+.status {
+  font-size: 3.2rem;
+}
+.button {
+  background-color: var(--colorWhite);
+  font-size: 1.2rem;
+  padding: 15px 50px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+@media (min-width: 840px) {
+  .centralResultComponent {
+    position: static;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .button {
+    transition: color 300ms ease-out;
+    &:hover {
+      color: var(--colorRed);
+      transition: color 300ms ease-out;
+    }
+  }
+}

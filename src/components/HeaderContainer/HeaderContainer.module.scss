@@ -1,0 +1,49 @@
+.headerContainer {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 3px solid var(--colorHeaderOutline);
+  border-radius: 16px;
+  padding: 16px;
+  gap: 10px;
+}
+.scoreContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--colorWhite);
+  border-radius: 10px;
+  padding: 20px 10px;
+  min-width: 140px;
+}
+.text {
+  color: var(--colorScoreText);
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+}
+.score {
+  color: var(--colorDarkText);
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+.image {
+  max-height: 80px;
+}
+
+@media (min-width: 840px) {
+  .headerContainer {
+    width: 60%;
+    padding: 30px;
+    gap: 20px;
+  }
+  .scoreContainer {
+    padding: 20px;
+  }
+
+  .image {
+    max-height: 100px;
+  }
+}

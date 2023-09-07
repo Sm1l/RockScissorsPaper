@@ -1,0 +1,59 @@
+@import-normalize;
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+:root {
+  --colorWhite: #ffffff;
+  --colorBlack: #0c0c0c;
+  --colorRed: #db6e6e;
+  --colorBackgroundFrom: #1f3756;
+  --colorBackgroundTo: #141539;
+  --colorDarkText: #3b4363;
+  --colorScoreText: #2a46c0;
+  --colorHeaderOutline: #606e85;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  color: var(--colorWhite);
+  font-weight: 600; //700
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+button {
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+@media (min-width: 840px) {
+  html,
+  body {
+    font-size: 16px;
+  }
+}
+// ## Colors
+
+// ### Primary
+
+// - Scissors Gradient: hsl(39, 89%, 49%) to hsl(40, 84%, 53%)
+// - Paper Gradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%)
+// - Rock Gradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%)
+// - Lizard Gradient: hsl(261, 73%, 60%) to hsl(261, 72%, 63%)
+// - Cyan: hsl(189, 59%, 53%) to hsl(189, 58%, 57%)
+
+// ### Neutral
+
+// - Dark Text: hsl(229, 25%, 31%)
+// - Score Text: hsl(229, 64%, 46%)
+// - Header Outline: hsl(217, 16%, 45%)
+
+// ### Background
+
+// - Radial Gradient: hsl(214, 47%, 23%) to hsl(237, 49%, 15%)

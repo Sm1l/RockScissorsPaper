@@ -1,0 +1,35 @@
+.footerContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button {
+  background-color: transparent;
+  border: 1px solid var(--colorWhite);
+  border-radius: 7px;
+  padding: 10px 25px;
+  color: var(--colorWhite);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+@media (min-width: 840px) {
+  .footerContainer {
+    justify-content: flex-end;
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .button {
+    border: 2px solid var(--colorHeaderOutline);
+    color: var(--colorHeaderOutline);
+    transition: color 300ms ease-out, border-color 300ms ease-out;
+
+    &:hover {
+      color: var(--colorWhite);
+      border-color: var(--colorWhite);
+      transition: color 300ms ease-out, border-color 300ms ease-out;
+    }
+  }
+}

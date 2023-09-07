@@ -1,0 +1,26 @@
+.choose {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: url("/images/bg-triangle.svg") no-repeat center;
+}
+
+.gameItemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+@media (min-width: 840px) {
+  .choose {
+    gap: 40px;
+  }
+  .gameItemContainer {
+    gap: 100px;
+  }
+}
