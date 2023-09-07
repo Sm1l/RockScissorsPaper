@@ -24,33 +24,20 @@ const Picked: React.FC<PickedProps> = () => {
     >
       <motion.div className={`${styles.gameItemContainer} ${styles.leftContainer}`}>
         <p className={styles.text}>you picked</p>
-        {winStatus === "win" ? (
-          <WinGameItem>{choosenGameItem != null && <GameItem gameItem={choosenGameItem} size="Big" />}</WinGameItem>
-        ) : (
-          <> {choosenGameItem != null && <GameItem gameItem={choosenGameItem} size="Big" />}</>
-        )}
-        {/* // {choosenGameItem != null && <GameItem gameItem={choosenGameItem} size="Big" />} */}
+        <WinGameItem condition={winStatus === "win"}>
+          {choosenGameItem != null && <GameItem gameItem={choosenGameItem} size="Big" />}
+        </WinGameItem>
       </motion.div>
       {winStatus != null && <CentralResultComponent />}
       <div className={`${styles.gameItemContainer} ${styles.rightContainer}`}>
         <p className={styles.text}>the house picked</p>
-        {winStatus === "lose" ? (
-          <WinGameItem>
-            {compGameItem != null ? (
-              <GameItem gameItem={compGameItem} size="Big" />
-            ) : (
-              <div className={styles.empty}> </div>
-            )}
-          </WinGameItem>
-        ) : (
-          <>
-            {compGameItem != null ? (
-              <GameItem gameItem={compGameItem} size="Big" />
-            ) : (
-              <div className={styles.empty}> </div>
-            )}
-          </>
-        )}
+        <WinGameItem condition={winStatus === "lose"}>
+          {compGameItem != null ? (
+            <GameItem gameItem={compGameItem} size="Big" />
+          ) : (
+            <div className={styles.empty}> </div>
+          )}
+        </WinGameItem>
       </div>
     </motion.div>
   );
