@@ -5,6 +5,7 @@ import styles from "./Picked.module.scss";
 import { useCompGameItem, useGameItem, useWinStatus } from "components/store";
 import { GameItem } from "components/GameItem";
 import { CentralResultComponent } from "components/CentralResultComponent";
+import { WinGameItem } from "components/WinGameItem";
 
 interface PickedProps {}
 
@@ -21,14 +22,35 @@ const Picked: React.FC<PickedProps> = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className={`${styles.gameItemContainer} ${styles.leftContainer}`}>
+      <motion.div className={`${styles.gameItemContainer} ${styles.leftContainer}`}>
         <p className={styles.text}>you picked</p>
-        {choosenGameItem != null && <GameItem gameItem={choosenGameItem} size="Big" />}
-      </div>
+        {winStatus === "win" ? (
+          <WinGameItem>{choosenGameItem != null && <GameItem gameItem={choosenGameItem} size="Big" />}</WinGameItem>
+        ) : (
+          <> {choosenGameItem != null && <GameItem gameItem={choosenGameItem} size="Big" />}</>
+        )}
+        {/* // {choosenGameItem != null && <GameItem gameItem={choosenGameItem} size="Big" />} */}
+      </motion.div>
       {winStatus != null && <CentralResultComponent />}
       <div className={`${styles.gameItemContainer} ${styles.rightContainer}`}>
         <p className={styles.text}>the house picked</p>
-        {compGameItem != null ? <GameItem gameItem={compGameItem} size="Big" /> : <div className={styles.empty}> </div>}
+        {winStatus === "lose" ? (
+          <WinGameItem>
+            {compGameItem != null ? (
+              <GameItem gameItem={compGameItem} size="Big" />
+            ) : (
+              <div className={styles.empty}> </div>
+            )}
+          </WinGameItem>
+        ) : (
+          <>
+            {compGameItem != null ? (
+              <GameItem gameItem={compGameItem} size="Big" />
+            ) : (
+              <div className={styles.empty}> </div>
+            )}
+          </>
+        )}
       </div>
     </motion.div>
   );
