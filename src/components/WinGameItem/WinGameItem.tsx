@@ -15,9 +15,7 @@ const WinGameItem: React.FC<WinGameItemProps> = ({ children, condition }) => {
         className={styles.winEl}
         initial={condition && { scale: 1 }}
         animate={condition && { scale: 1.1 }}
-        // animate={{ scale: 1.1 }}
         transition={condition ? { repeat: Infinity, repeatType: "reverse", duration: 1 } : undefined}
-        // transition={{ repeat: Infinity, repeatType: "reverse", duration: 1 }}
       >
         {children}
       </motion.div>

@@ -20,6 +20,7 @@ const CentralResultComponent: React.FC<CentralResultComponentProps> = () => {
 
   return (
     <motion.div
+      layout
       className={styles.centralResultComponent}
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
