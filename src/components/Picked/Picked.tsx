@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, LayoutGroup } from "framer-motion";
+import { motion } from "framer-motion";
 
 import styles from "./Picked.module.scss";
 import { useCompGameItem, useGameItem, useWinStatus } from "components/store";
@@ -22,25 +22,23 @@ const Picked: React.FC<PickedProps> = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <LayoutGroup>
-        <motion.div layout className={`${styles.gameItemContainer} ${styles.leftContainer}`}>
-          <p className={styles.text}>you picked</p>
-          <WinGameItem condition={winStatus === "win"}>
-            {choosenGameItem != null && <GameItem gameItem={choosenGameItem} size="Big" />}
-          </WinGameItem>
-        </motion.div>
-        {winStatus != null && <CentralResultComponent />}
-        <motion.div layout className={`${styles.gameItemContainer} ${styles.rightContainer}`}>
-          <p className={styles.text}>the house picked</p>
-          <WinGameItem condition={winStatus === "lose"}>
-            {compGameItem != null ? (
-              <GameItem gameItem={compGameItem} size="Big" />
-            ) : (
-              <div className={styles.empty}> </div>
-            )}
-          </WinGameItem>
-        </motion.div>
-      </LayoutGroup>
+      <motion.div layout className={`${styles.gameItemContainer} ${styles.leftContainer}`}>
+        <p className={styles.text}>you picked</p>
+        <WinGameItem condition={winStatus === "win"}>
+          {choosenGameItem != null && <GameItem gameItem={choosenGameItem} size="Big" />}
+        </WinGameItem>
+      </motion.div>
+      {winStatus != null && <CentralResultComponent />}
+      <motion.div layout className={`${styles.gameItemContainer} ${styles.rightContainer}`}>
+        <p className={styles.text}>the house picked</p>
+        <WinGameItem condition={winStatus === "lose"}>
+          {compGameItem != null ? (
+            <GameItem gameItem={compGameItem} size="Big" />
+          ) : (
+            <div className={styles.empty}> </div>
+          )}
+        </WinGameItem>
+      </motion.div>
     </motion.div>
   );
 };

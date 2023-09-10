@@ -8,19 +8,18 @@ interface CentralResultComponentProps {}
 
 const CentralResultComponent: React.FC<CentralResultComponentProps> = () => {
   const setGameItem = useGameItem((state) => state.setGameItem);
-  const setCompGameItem = useCompGameItem((state) => state.setCompGameItem);
+  const clearCompGameItem = useCompGameItem((state) => state.clearCompGameItem);
   const winStatus = useWinStatus((state) => state.winStatus);
-  const setWinStatus = useWinStatus((state) => state.setWinStatus);
+  const clearWinStatus = useWinStatus((state) => state.clearWinStatus);
 
   const handleClick = () => {
     setGameItem(null);
-    setCompGameItem(null);
-    setWinStatus(null);
+    clearCompGameItem();
+    clearWinStatus();
   };
 
   return (
     <motion.div
-      layout
       className={styles.centralResultComponent}
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}

@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { GameItemType } from "types/GameItem";
 import { WinStatusType } from "types/WinStatus";
+import { determiningTheWinner } from "helpers/determTheWinner";
 
 //*----------useCounter
 interface CounterState {
@@ -55,28 +56,35 @@ export const useGameItem = create<GameItemState>()((set) => ({
 
 interface CompGameItemState {
   compGameItem: GameItemType | null;
-  setCompGameItem: (item: GameItemType | null) => void;
+  setCompGameItem: () => void;
+  clearCompGameItem: () => void;
 }
-
 export const useCompGameItem = create<CompGameItemState>()((set) => ({
   compGameItem: null,
-  setCompGameItem: (item) => set({ compGameItem: item }),
+  setCompGameItem: () => {
+    setTimeout(() => {
+      const items: GameItemType[] = ["rock", "scissors", "paper"];
+      let item = items[Math.floor(Math.random() * items.length)];
+      set({ compGameItem: item });
+    }, 2000);
+  },
+  clearCompGameItem: () => set({ compGameItem: null }),
 }));
-
-// const items = ["rock", "scissors", "paper"]
-// let item = items[Math.floor(Math.random() * items.length)]
-// compGameItem: item;
 
 //*----------useWinStatus
 
 interface WinStatusState {
   winStatus: WinStatusType | null;
-  setWinStatus: (status: WinStatusType | null) => void;
-  // setWinStatus: (gameItem: GameItemType, compGameItem: GameItemType) => void;
+  setWinStatus: (gameItem: GameItemType, compGameItem: GameItemType) => void;
+  clearWinStatus: () => void;
 }
 
 export const useWinStatus = create<WinStatusState>()((set) => ({
   winStatus: null,
-  setWinStatus: (status) => set({ winStatus: status }),
-  // setWinStatus: (gameItem, compGameItem) => set(() => ({})),
+  setWinStatus: (gameItem, compGameItem) => {
+    setTimeout(() => {
+      set(() => ({ winStatus: determiningTheWinner(gameItem, compGameItem) }));
+    }, 1000);
+  },
+  clearWinStatus: () => set({ winStatus: null }),
 }));
